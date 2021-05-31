@@ -28,59 +28,61 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem(new string[] {
             "Bahama Breeze",
             "Large",
             "White",
             "1",
             "15.99"}, -1);
-            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem4 = new System.Windows.Forms.ListViewItem(new string[] {
             "Pine Dreams",
             "Medium",
             "Green",
             "5",
             "12.99"}, -1);
-            this.listView1 = new System.Windows.Forms.ListView();
+            this.candleList = new System.Windows.Forms.ListView();
             this.Scent = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Size = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Color = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Quantity = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Price = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.label1 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.addInvButton = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.button3 = new System.Windows.Forms.Button();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
-            this.radioButton4 = new System.Windows.Forms.RadioButton();
-            this.radioButton5 = new System.Windows.Forms.RadioButton();
+            this.scentSort = new System.Windows.Forms.RadioButton();
+            this.sizeSort = new System.Windows.Forms.RadioButton();
+            this.colorSort = new System.Windows.Forms.RadioButton();
+            this.quantitySort = new System.Windows.Forms.RadioButton();
+            this.priceSort = new System.Windows.Forms.RadioButton();
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
+            this.checkBoxPanel = new System.Windows.Forms.Panel();
+            this.checkBoxPanel.SuspendLayout();
             this.SuspendLayout();
             // 
-            // listView1
+            // candleList
             // 
-            this.listView1.AutoArrange = false;
-            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.candleList.AutoArrange = false;
+            this.candleList.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.Scent,
             this.Size,
             this.Color,
             this.Quantity,
             this.Price});
-            this.listView1.HideSelection = false;
-            this.listView1.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem1,
-            listViewItem2});
-            this.listView1.Location = new System.Drawing.Point(206, 129);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(384, 247);
-            this.listView1.Sorting = System.Windows.Forms.SortOrder.Ascending;
-            this.listView1.TabIndex = 1;
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            this.listView1.View = System.Windows.Forms.View.Details;
+            this.candleList.HideSelection = false;
+            this.candleList.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
+            listViewItem3,
+            listViewItem4});
+            this.candleList.Location = new System.Drawing.Point(206, 146);
+            this.candleList.Name = "candleList";
+            this.candleList.Size = new System.Drawing.Size(384, 247);
+            this.candleList.Sorting = System.Windows.Forms.SortOrder.Ascending;
+            this.candleList.TabIndex = 1;
+            this.candleList.UseCompatibleStateImageBehavior = false;
+            this.candleList.View = System.Windows.Forms.View.Details;
             // 
             // Scent
             // 
@@ -115,18 +117,19 @@
             this.label1.TabIndex = 2;
             this.label1.Text = "Inventory";
             // 
-            // button1
+            // addInvButton
             // 
-            this.button1.Location = new System.Drawing.Point(278, 384);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "Add";
-            this.button1.UseVisualStyleBackColor = true;
+            this.addInvButton.Location = new System.Drawing.Point(278, 399);
+            this.addInvButton.Name = "addInvButton";
+            this.addInvButton.Size = new System.Drawing.Size(75, 23);
+            this.addInvButton.TabIndex = 3;
+            this.addInvButton.Text = "Add";
+            this.addInvButton.UseVisualStyleBackColor = true;
+            this.addInvButton.Click += new System.EventHandler(this.addInvButton_Click);
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(441, 384);
+            this.button2.Location = new System.Drawing.Point(441, 399);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 4;
@@ -149,60 +152,57 @@
             this.button3.Text = "Search";
             this.button3.UseVisualStyleBackColor = true;
             // 
-            // radioButton1
+            // scentSort
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(216, 106);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(53, 17);
-            this.radioButton1.TabIndex = 7;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Scent";
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.scentSort.AutoSize = true;
+            this.scentSort.Checked = true;
+            this.scentSort.Location = new System.Drawing.Point(3, 12);
+            this.scentSort.Name = "scentSort";
+            this.scentSort.Size = new System.Drawing.Size(53, 17);
+            this.scentSort.TabIndex = 7;
+            this.scentSort.TabStop = true;
+            this.scentSort.Text = "Scent";
+            this.scentSort.UseVisualStyleBackColor = true;
             // 
-            // radioButton2
+            // sizeSort
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(312, 106);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(45, 17);
-            this.radioButton2.TabIndex = 8;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "Size";
-            this.radioButton2.UseVisualStyleBackColor = true;
+            this.sizeSort.AutoSize = true;
+            this.sizeSort.Location = new System.Drawing.Point(59, 12);
+            this.sizeSort.Name = "sizeSort";
+            this.sizeSort.Size = new System.Drawing.Size(45, 17);
+            this.sizeSort.TabIndex = 8;
+            this.sizeSort.Text = "Size";
+            this.sizeSort.UseVisualStyleBackColor = true;
             // 
-            // radioButton3
+            // colorSort
             // 
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.Location = new System.Drawing.Point(373, 106);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(49, 17);
-            this.radioButton3.TabIndex = 9;
-            this.radioButton3.TabStop = true;
-            this.radioButton3.Text = "Color";
-            this.radioButton3.UseVisualStyleBackColor = true;
+            this.colorSort.AutoSize = true;
+            this.colorSort.Location = new System.Drawing.Point(110, 12);
+            this.colorSort.Name = "colorSort";
+            this.colorSort.Size = new System.Drawing.Size(49, 17);
+            this.colorSort.TabIndex = 9;
+            this.colorSort.Text = "Color";
+            this.colorSort.UseVisualStyleBackColor = true;
             // 
-            // radioButton4
+            // quantitySort
             // 
-            this.radioButton4.AutoSize = true;
-            this.radioButton4.Location = new System.Drawing.Point(428, 106);
-            this.radioButton4.Name = "radioButton4";
-            this.radioButton4.Size = new System.Drawing.Size(64, 17);
-            this.radioButton4.TabIndex = 10;
-            this.radioButton4.TabStop = true;
-            this.radioButton4.Text = "Quantity";
-            this.radioButton4.UseVisualStyleBackColor = true;
+            this.quantitySort.AutoSize = true;
+            this.quantitySort.Location = new System.Drawing.Point(165, 12);
+            this.quantitySort.Name = "quantitySort";
+            this.quantitySort.Size = new System.Drawing.Size(64, 17);
+            this.quantitySort.TabIndex = 10;
+            this.quantitySort.Text = "Quantity";
+            this.quantitySort.UseVisualStyleBackColor = true;
             // 
-            // radioButton5
+            // priceSort
             // 
-            this.radioButton5.AutoSize = true;
-            this.radioButton5.Location = new System.Drawing.Point(498, 106);
-            this.radioButton5.Name = "radioButton5";
-            this.radioButton5.Size = new System.Drawing.Size(49, 17);
-            this.radioButton5.TabIndex = 11;
-            this.radioButton5.TabStop = true;
-            this.radioButton5.Text = "Price";
-            this.radioButton5.UseVisualStyleBackColor = true;
+            this.priceSort.AutoSize = true;
+            this.priceSort.Location = new System.Drawing.Point(235, 12);
+            this.priceSort.Name = "priceSort";
+            this.priceSort.Size = new System.Drawing.Size(49, 17);
+            this.priceSort.TabIndex = 11;
+            this.priceSort.Text = "Price";
+            this.priceSort.UseVisualStyleBackColor = true;
             // 
             // button4
             // 
@@ -231,54 +231,64 @@
             this.label2.TabIndex = 14;
             this.label2.Text = "Sort";
             // 
+            // checkBoxPanel
+            // 
+            this.checkBoxPanel.Controls.Add(this.scentSort);
+            this.checkBoxPanel.Controls.Add(this.sizeSort);
+            this.checkBoxPanel.Controls.Add(this.colorSort);
+            this.checkBoxPanel.Controls.Add(this.quantitySort);
+            this.checkBoxPanel.Controls.Add(this.priceSort);
+            this.checkBoxPanel.Location = new System.Drawing.Point(206, 105);
+            this.checkBoxPanel.Name = "checkBoxPanel";
+            this.checkBoxPanel.Size = new System.Drawing.Size(384, 35);
+            this.checkBoxPanel.TabIndex = 15;
+            // 
             // HomePage
             // 
             this.AccessibleName = "HomePage";
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.checkBoxPanel);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.button4);
-            this.Controls.Add(this.radioButton5);
-            this.Controls.Add(this.radioButton4);
-            this.Controls.Add(this.radioButton3);
-            this.Controls.Add(this.radioButton2);
-            this.Controls.Add(this.radioButton1);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.addInvButton);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.listView1);
+            this.Controls.Add(this.candleList);
             this.Name = "HomePage";
             this.Text = "Home";
+            this.checkBoxPanel.ResumeLayout(false);
+            this.checkBoxPanel.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.ListView listView1;
         private System.Windows.Forms.ColumnHeader Scent;
         private System.Windows.Forms.ColumnHeader Size;
         private System.Windows.Forms.ColumnHeader Color;
         private System.Windows.Forms.ColumnHeader Quantity;
         private System.Windows.Forms.ColumnHeader Price;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button addInvButton;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.RadioButton radioButton1;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radioButton3;
-        private System.Windows.Forms.RadioButton radioButton4;
-        private System.Windows.Forms.RadioButton radioButton5;
+        private System.Windows.Forms.RadioButton scentSort;
+        private System.Windows.Forms.RadioButton sizeSort;
+        private System.Windows.Forms.RadioButton colorSort;
+        private System.Windows.Forms.RadioButton quantitySort;
+        private System.Windows.Forms.RadioButton priceSort;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Panel checkBoxPanel;
+        public System.Windows.Forms.ListView candleList;
     }
 }
 
