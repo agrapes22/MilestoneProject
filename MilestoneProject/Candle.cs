@@ -65,5 +65,29 @@ namespace MilestoneProject
             return price.ToString();
         }
 
+        public void setScent(String scent)
+        {
+            this.scent = scent;
+        }
+
+        public void setSize(String size)
+        {
+            this.size = size;
+        }
+        public void setColor(String color)
+        {
+            this.color = color;
+        }
+
+        public void setQuantity(int quantity)
+        {
+            this.quantity = quantity;
+        }
+
+        public void setPrice(float price)
+        {
+            this.price = price;
+        }
+
     }
 }

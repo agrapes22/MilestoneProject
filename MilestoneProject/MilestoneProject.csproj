@@ -47,6 +47,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CandleInventory.cs" />
+    <Compile Include="CreatePage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreatePage.Designer.cs">
+      <DependentUpon>CreatePage.cs</DependentUpon>
+    </Compile>
     <Compile Include="EditPage.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -62,6 +68,9 @@
     <Compile Include="Candle.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="CreatePage.resx">
+      <DependentUpon>CreatePage.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="EditPage.resx">
       <DependentUpon>EditPage.cs</DependentUpon>
     </EmbeddedResource>

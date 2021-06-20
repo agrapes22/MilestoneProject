@@ -10,32 +10,19 @@ using System.Windows.Forms;
 
 namespace MilestoneProject
 {
-    public partial class EditPage : Form
+    public partial class CreatePage : Form
     {
         CandleInventory candles;
-        Candle c;
 
-        public EditPage(CandleInventory candles)
+        public CreatePage(CandleInventory candles)
         {
             this.candles = candles;
             InitializeComponent();
-        }
-
-        public EditPage(Candle candle, CandleInventory candles)
-        {
-            InitializeComponent();
-            scentBox.Text = candle.getScent();
-            sizeBox.Text = candle.getSize();
-            colorBox.Text = candle.getColor();
-            quantityBox.Value = decimal.Parse(candle.getQuantity());
-            priceBox.Text = candle.getPrice();
-            this.candles = candles;
-            this.c = candle;
         }
 
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EditPage));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CreatePage));
             this.okEditButton = new System.Windows.Forms.Button();
             this.cancelEditButton = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -49,7 +36,6 @@ namespace MilestoneProject
             this.quantityBox = new System.Windows.Forms.NumericUpDown();
             this.priceBox = new System.Windows.Forms.MaskedTextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.deleteButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.quantityBox)).BeginInit();
             this.SuspendLayout();
             // 
@@ -65,7 +51,7 @@ namespace MilestoneProject
             this.okEditButton.TabIndex = 0;
             this.okEditButton.Text = "OK";
             this.okEditButton.UseVisualStyleBackColor = false;
-            this.okEditButton.Click += new System.EventHandler(this.okEditButton_Click);
+            this.okEditButton.Click += new System.EventHandler(this.okCreateButton_Click);
             // 
             // cancelEditButton
             // 
@@ -190,29 +176,14 @@ namespace MilestoneProject
             this.label6.Font = new System.Drawing.Font("Modern No. 20", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.Location = new System.Drawing.Point(270, 23);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(111, 24);
+            this.label6.Size = new System.Drawing.Size(107, 24);
             this.label6.TabIndex = 13;
-            this.label6.Text = "Edit Candle";
+            this.label6.Text = "Add Candle";
             // 
-            // deleteButton
-            // 
-            this.deleteButton.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.deleteButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.deleteButton.Font = new System.Drawing.Font("Modern No. 20", 8.999999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.deleteButton.ForeColor = System.Drawing.Color.DarkRed;
-            this.deleteButton.Location = new System.Drawing.Point(572, 23);
-            this.deleteButton.Name = "deleteButton";
-            this.deleteButton.Size = new System.Drawing.Size(75, 23);
-            this.deleteButton.TabIndex = 14;
-            this.deleteButton.Text = "Delete";
-            this.deleteButton.UseVisualStyleBackColor = false;
-            this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
-            // 
-            // EditPage
+            // CreatePage
             // 
             this.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.ClientSize = new System.Drawing.Size(671, 420);
-            this.Controls.Add(this.deleteButton);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.priceBox);
             this.Controls.Add(this.quantityBox);
@@ -229,50 +200,46 @@ namespace MilestoneProject
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.Name = "EditPage";
-            this.Text = "Edit Candle";
+            this.Name = "CreatePage";
+            this.Text = "Add New Candle";
             ((System.ComponentModel.ISupportInitialize)(this.quantityBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
-        private void okEditButton_Click(object sender, EventArgs e)
+        private void okCreateButton_Click(object sender, EventArgs e)
         {
-            /*
-            String scent = scentBox.Text;
-            String size = sizeBox.Text;
+            String scent = scentBox.Text; //blueberry
+            String size = sizeBox.Text; //large
             String color = colorBox.Text;
             int quantity = (int)quantityBox.Value;
             float price = float.Parse(priceBox.Text);
-            */
 
-            Candle cand = candles.findCandleInInventory(c);
+            bool exists = false;
 
-            cand.setScent(scentBox.Text);
-            cand.setSize(sizeBox.Text);
-            cand.setColor(colorBox.Text);
-            cand.setQuantity((int)quantityBox.Value);
-            cand.setPrice(float.Parse(priceBox.Text));
+            Candle[] cs = candles.arrayOut();
+
+            for (int i = 0; i < cs.Length; i++)
+            {
+                if (cs[i].getScent().Equals(scent))
+                {
+                    if (cs[i].getSize().Equals(size))
+                    {
+                        //candle already exists don't add it
+                        exists = true;
+                    }
+                }
+            }
+
+            //Candle candle = new Candle(scent, size, color, quantity, price);
+
+            if (exists == false)
+            {
+                candles.add(new Candle(scent, size, color, quantity, price));
+            }
 
             //candles.outPut();
-
-            Close();
-        }
-
-        private void deleteButton_Click(object sender, EventArgs e)
-        {
-            /*
-            String scent = scentBox.Text;
-            String size = sizeBox.Text;
-            String color = colorBox.Text;
-            int quantity = (int)quantityBox.Value;
-            float price = float.Parse(priceBox.Text);
-            */
-
-            //Candle cand = candles.findCandleInInventory(c);
-
-            candles.removeCandle(c);
 
             Close();
         }

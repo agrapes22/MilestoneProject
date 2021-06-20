@@ -1,6 +1,6 @@
 ﻿namespace MilestoneProject
 {
-    partial class EditPage
+    partial class CreatePage
     {
         /// <summary>
         /// Required designer variable.
@@ -33,7 +33,6 @@
         private System.Windows.Forms.NumericUpDown quantityBox;
         private System.Windows.Forms.MaskedTextBox priceBox;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Button deleteButton;
         internal System.Windows.Forms.Button okEditButton;
         internal System.Windows.Forms.Button cancelEditButton;
     }
